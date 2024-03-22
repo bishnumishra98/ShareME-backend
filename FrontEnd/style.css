@@ -11,10 +11,6 @@ body, html {
     margin: 0;
 }
 
-header h1 {
-    font-size: 50px;
-}
-
 body, .drop-zone {
     display: flex;
     align-items: center;
