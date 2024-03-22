@@ -40,6 +40,8 @@ body, .drop-zone {
 
 .icon-container img {
     position: absolute;
+    transform-origin: bottom;
+    transition: transform 250ms ease-in-out;
 }
 
 .icon-container .center {
@@ -49,4 +51,16 @@ body, .drop-zone {
 
 .icon-container .left, .icon-container .right {
     width: 70px;
+}
+
+.dragged .icon-container .left {
+    transform: rotate(-30deg) translateX(-30px) scale(1.1);
+}
+
+.dragged .icon-container .right {
+    transform: rotate(30deg) translateX(30px) scale(1.1);
+}
+
+.dragged .icon-container .center {
+    transform: translateY(-5px);
 }
