@@ -36,12 +36,13 @@ body, .drop-zone {
     width: 75px;
     height: 100px;
     position: relative;
+    cursor: pointer;
 }
 
 .icon-container img {
     position: absolute;
     transform-origin: bottom;
-    transition: transform 250ms ease-in-out;
+    transition: transform 150ms ease-in-out;   /* for smooth transition */
 }
 
 .icon-container .center {
