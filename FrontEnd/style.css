@@ -11,10 +11,11 @@ body, html {
     margin: 0;
 }
 
-body {
+body, .drop-zone {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .upload-container {
@@ -29,4 +30,23 @@ body {
     border: 2px dashed var(--border-color);
     margin: 30px;
     border-radius: 10px;
+}
+
+.icon-container {
+    width: 75px;
+    height: 100px;
+    position: relative;
+}
+
+.icon-container img {
+    position: absolute;
+}
+
+.icon-container .center {
+    width: 100px;
+    z-index: 2;
+}
+
+.icon-container .left, .icon-container .right {
+    width: 70px;
 }
