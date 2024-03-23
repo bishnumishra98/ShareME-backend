@@ -1,4 +1,4 @@
-const require = require('express');
+const express = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 3000;   // if there's a port number specified 
