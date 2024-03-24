@@ -3,10 +3,8 @@ const app = express();
 const connectDB = require('./config/db');
 connectDB();
 
-app.use('api/files', require('./routes/files'));
-
-
-
+// Routes
+app.use('/api/files', require('./routes/files'));
 
 
 const PORT = process.env.PORT || 3000;   // if there's a port number specified 

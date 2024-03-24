@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const multer = require('multer');
+const path = require('path');   // this is in-built module of Node.js
 const File = require('../models/file');
 const {v4: uuid4} = require('uuid');
 
@@ -8,7 +9,7 @@ let storage = multer.diskStorage({
     filename: (req, file, cb) => {
         // For every file uploaded, we will create an unique name for it before storing it in DB to avoid clashes.
         // The unique file name may look somewhat like this: 34469761359-56976254976238.jpg
-        const uniqueName = `${Date.now()}-${Math.round(Math.random()*1E9)}${path.extname(file.originalname)}`;
+        const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1E9)}${path.extname(file.originalname)}`;
         cb(null, uniqueName);
     }
 });
@@ -19,7 +20,7 @@ let upload = multer({
 }).single('myfile');
 
 router.post('/', (req, res) => {
-    // Store files coming under uploads folder
+    // Store files into upload folder
     upload(req, res, async (err) => {
         // Validate request
         if(!req.file) {
@@ -30,7 +31,7 @@ router.post('/', (req, res) => {
             return res.status(500).send({error: err.message});
         }
 
-        // Store files into MongoDB
+        // Store into database
         const file = new File({
             filename: req.file.filename,
             uuid: uuid4(),
@@ -43,16 +44,6 @@ router.post('/', (req, res) => {
         return res.json({file: `${process.env.APP_BASE_URL}/files/${response.uuid}`});
     });
 
-    
-
-    
-
-
 });
 
 module.exports = router;
-
-// Extra Knowledge: Multer is a popular middleware for Node.js that simplifies handling
-// multipart/form-data which is primarily used for uploading files. It acts as a bridge
-// between the raw form data received from an HTML form submission and your Node.js application.
-// In our project, it will be helpful in storing file.
