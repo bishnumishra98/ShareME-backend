@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');   // this is in-built module of Node.js
 const File = require('../models/file');
 const {v4: uuid4} = require('uuid');
+const mongoose = require('../config/db');
 
 let storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
@@ -37,7 +38,7 @@ router.post('/', (req, res) => {
             uuid: uuid4(),
             path: req.file.path,
             size: req.file.size
-        });
+        }, { connection: mongoose.connection });
 
         const response = await file.save();
         // Send response which will contain link to download file. It may look somewhat like this: http://localhost:3000/files/12648jhldouhe-234bhjsbhkdhj
