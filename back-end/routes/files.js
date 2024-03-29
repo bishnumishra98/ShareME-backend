@@ -20,6 +20,7 @@ let upload = multer({
     limit: {fileSize: 1000000 * 500},
 }).single('myfile');
 
+// File upload functionality
 router.post('/', (req, res) => {
     // Store files into upload folder
     upload(req, res, async (err) => {
@@ -38,13 +39,12 @@ router.post('/', (req, res) => {
             uuid: uuid4(),
             path: req.file.path,
             size: req.file.size
-        }, { connection: mongoose.connection });
+        });
 
         const response = await file.save();
         // Send response which will contain link to download file. It may look somewhat like this: http://localhost:3000/files/12648jhldouhe-234bhjsbhkdhj
         return res.json({file: `${process.env.APP_BASE_URL}/files/${response.uuid}`});
     });
-
 });
 
 // Mail sending functionality
