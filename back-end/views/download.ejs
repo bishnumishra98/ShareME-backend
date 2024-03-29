@@ -17,11 +17,11 @@
         <% if(locals.error){ %>
         <h4><%= locals.error %>😕</h4>
         <% } else { %>
-        <h2>Your file is ready to download</h2>
-        <p>Link expires in 24 hours</p>
+        <h1>Your file is ready to download</h1>
+        <p style="font-size: 18px;">Link expires within 24 hours of uploading. </p>
         <div class="download__meta">
-            <h4><%= fileName %></h4>
-            <small><%= parseInt(fileSize/1024) %> KB</small>
+            <h4 style="font-size: large;"><%= fileName %></h4>
+            <small style="font-size: 17px"><%= Math.round(fileSize/1024) %> KB</small>
         </div>
         <div class="send-btn-container">
             <a href="<%= downloadLink %>">Download file</a>

@@ -1,7 +1,7 @@
 :root {
-	--main-bg-color: #edf5fe;
-	--light-blue: #03a9f4;
-	--dark-blue: #028bca;
+	--main-bg-color: #133b69;
+	--light-blue: #a85413;
+	--dark-blue: #6c3409;
 }
 
 body {
@@ -17,13 +17,13 @@ body {
 
 .logo {
 	position: absolute;
-	top: 10px;
-	left: 10px;
+	top: 0px;
+	left: 0px;
 	width: 300px;
 }
 
 section.download {
-    background: #fff;
+    background: rgb(181, 197, 181);
     width: 430px;
     max-width: 90%;
     border-radius: 25px;
@@ -43,16 +43,15 @@ section.download {
 
 .send-btn-container a {
     display: inline-block;
-    font-size: 18px;
-    padding: 8px 40px;
+    font-size: 21px;
+    padding: 9px 39px;
     margin-top: 15px;
     background: var(--light-blue);
     text-decoration: none;
-    border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #fff;
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 
 .send-btn-container a:hover {
