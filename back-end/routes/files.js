@@ -49,9 +49,9 @@ router.post('/', (req, res) => {
 
 // Mail sending functionality
 router.post('/send', async (req, res) => {
-    const { uuid, emailTo, emailFrom, expiresIn } = req.body;
+    const { uuid, emailTo, emailFrom } = req.body;
     if(!uuid || !emailTo || !emailFrom) {
-        return res.status(422).send({ error: 'All fields are required except expiry.'});
+        return res.status(422).send({ error: 'All fields are required.'});
     }
     // Get data from db
     try {
