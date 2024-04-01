@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
 
         const response = await file.save();
         // Send response which will contain link to download file. It may look somewhat like this: http://localhost:3000/files/12648jhldouhe-234bhjsbhkdhj
-        return res.json({file: `${process.env.APP_BASE_URL}/files/${response.uuid}`});
+        return res.json({file: `${process.env.APP_BASE_URL}files/${response.uuid}`});
     });
 });
 
