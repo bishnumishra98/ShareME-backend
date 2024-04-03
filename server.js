@@ -13,7 +13,8 @@ app.use(express.static('public'));   // app.use() is a  built-in method used to 
 app.use(express.json());   // express.json() is a middleware used to parse json data in express application
 // CORS
 const corsOptions = {
-    origin: process.env.ALLOWED_CLIENTS.split(',')
+    // origin: process.env.ALLOWED_CLIENTS.split(',')
+    origin: "https://bishnumishra98.github.io/ShareME-frontend/"
 }
 app.use(cors(corsOptions));
 
