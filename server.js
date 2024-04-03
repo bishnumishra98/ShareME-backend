@@ -13,17 +13,10 @@ app.use(express.static('public'));   // app.use() is a  built-in method used to 
 // images, CSS, JavaScript, etc., from a specified directory.
 app.use(express.json());   // express.json() is a middleware used to parse json data in express application
 
-// CORS
-// const corsOptions = {
-//     origin: process.env.ALLOWED_CLIENTS.split(',')
-// }
-// app.use(cors(corsOptions));
-
 // Middleware to handle CORS
 app.use(cors({
     origin: process.env.ALLOWED_CLIENTS.split(',').map(url => url.trim()),
 }));
-
 
 // Template engine (ejs)
 app.set('views', path.join(__dirname, '/views'));
