@@ -147,7 +147,7 @@ module.exports = ({emailFrom, downloadLink, size, expires}) => {
                         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                             <tr>
                             <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                                <br> Want to share a file? <a href="http://localhost:3000" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">ShareME</a>.
+                                <br> Want to share a file? Use <a href="https://bishnumishra98.github.io/ShareME-frontend/" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">ShareME</a>.
                             </td>
                             </tr>
                         </table>
