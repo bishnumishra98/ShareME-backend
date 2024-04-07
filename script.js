@@ -1,5 +1,5 @@
-// This script deletes files from upload folder after 24 hours. It is scheduled in Heroku
-// to run daily at 3:00AM to delete all files that are older than 24 hours at that time.
+// This script deletes files from upload folder after 24 hours. It is scheduled to run
+// daily at 3:00AM to delete all files that are older than 24 hours at that time.
 
 const File = require("./models/file");
 const fs = require("fs");
