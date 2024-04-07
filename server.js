@@ -5,7 +5,7 @@ connectDB();
 const path = require('path');   // path is an in-built node.js module
 const cors = require('cors');   // a middleware to allow browser to request different domain server
 require('dotenv').config();   // Load environment variables
-const { deleteFiles } = require('./fileDeleteScript');
+const File = require("./models/file");
 
 // Middlewares
 app.use(express.static('public'));   // app.use() is a  built-in method used to mount middleware functions.
@@ -28,8 +28,27 @@ app.use('/api/files', require('./routes/files'));
 app.use('/files', require('./routes/show'));
 app.use('/files/download', require('./routes/download'));
 
-// Run this task every time the server is restarted, i.e., made awake
-deleteFiles();   // calling this function to delete files older than 24 hours
+// Run this task every time the server is restarted, i.e., server made awake.
+// Delete all files older than 24 hours
+async function deleteFiles() {
+    const past24hrDate = new Date(Date.now() - 24 * 60 * 60 * 1000);   // Date.now() fetches current timestamp in milliseconds
+    const files = await File.find({ createdAt: { $lt: past24hrDate } });
+
+    if (files.length) {
+        for (const file of files) {
+            try {
+                await file.deleteOne();
+                console.log(`Successfully deleted ${file.filename}`);
+            } catch (err) {
+                console.log(`Error while deleting file: ${err}`);
+            }
+        }
+    } else {
+        console.log('Currently there is no such file to delete.');
+    }
+}
+
+deleteFiles();
 
 const PORT = process.env.PORT || 3000;   // if there's a port number specified 
 // in the environment variables, use that. If not specified, use port 3000.
