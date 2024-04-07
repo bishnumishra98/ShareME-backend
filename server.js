@@ -5,7 +5,7 @@ connectDB();
 const path = require('path');   // path is an in-built node.js module
 const cors = require('cors');   // a middleware to allow browser to request different domain server
 require('dotenv').config();   // Load environment variables
-const { deleteOldFiles } = require('./fileDeleteScript');
+const { deleteFiles } = require('./fileDeleteScript');
 
 // Middlewares
 app.use(express.static('public'));   // app.use() is a  built-in method used to mount middleware functions.
@@ -29,7 +29,7 @@ app.use('/files', require('./routes/show'));
 app.use('/files/download', require('./routes/download'));
 
 // Run this task every time the server is restarted, i.e., made awake
-deleteOldFiles();   // calling this function to delete files older than 24 hours
+deleteFiles();   // calling this function to delete files older than 24 hours
 
 const PORT = process.env.PORT || 3000;   // if there's a port number specified 
 // in the environment variables, use that. If not specified, use port 3000.
