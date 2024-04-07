@@ -8,7 +8,6 @@ require('dotenv').config();   // Load environment variables
 // const schedule = require('node-schedule');
 // const { deleteOldFiles } = require('./fileDeleteScript');
 
-
 // Middlewares
 app.use(express.static('public'));   // app.use() is a  built-in method used to mount middleware functions.
 // express.static() is a built-in middleware function in Express.js to serve static files such as HTML,
