@@ -28,8 +28,7 @@ app.use('/api/files', require('./routes/files'));
 app.use('/files', require('./routes/show'));
 app.use('/files/download', require('./routes/download'));
 
-// Run this task every time the server is restarted, i.e., server made awake.
-// Delete all files older than 24 hours
+// Function to delete all files older than 24 hours
 async function deleteFiles() {
     const past24hrDate = new Date(Date.now() - 24 * 60 * 60 * 1000);   // Date.now() fetches current timestamp in milliseconds
     const files = await File.find({ createdAt: { $lt: past24hrDate } });
@@ -48,7 +47,7 @@ async function deleteFiles() {
     }
 }
 
-deleteFiles();
+deleteFiles();   // calling this function every time the server is restarted, i.e., server made awake.
 
 const PORT = process.env.PORT || 3000;   // if there's a port number specified 
 // in the environment variables, use that. If not specified, use port 3000.
