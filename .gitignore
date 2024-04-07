@@ -2,4 +2,5 @@
 uploads/*
 !uploads/.gitkeep
 node_modules
+fileDeleteScript.js
 .DS_Store

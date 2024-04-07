@@ -23,6 +23,6 @@ async function deleteFiles() {
 }
 
 // Calling the deleteFiles() function
-deleteFiles();
-
-module.exports = deleteFiles;
+deleteFiles().then(() => {
+    process.exit();
+});
