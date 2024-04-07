@@ -21,7 +21,4 @@ async function deleteFiles() {
     console.log('Job done!');
 }
 
-// Calling the deleteFiles() function
-deleteFiles().then(() => {
-    process.exit();
-});
+module.exports = deleteFiles;
