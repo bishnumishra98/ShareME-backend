@@ -8,7 +8,6 @@ function connectDB() {
     // start the connection by accessing the connection object (mongoose.connection)
     const connection = mongoose.connection;
 
-    // Check for errors
     connection.once("open", () => {
         console.log("Connected to MongoDB");
     });
