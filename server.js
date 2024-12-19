@@ -15,7 +15,6 @@ app.use(express.json());   // express.json() is a middleware used to parse json 
 
 // Middleware to handle CORS
 app.use(cors({
-    // origin: process.env.ALLOWED_CLIENTS.split(',').map(url => url.trim()),
     origin: '*'
 }));
 
