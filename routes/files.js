@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
 
         const response = await file.save();
         // Send response which will contain link to download file. It may look somewhat like this: http://localhost:3000/files/12648jhldouhe-234bhjsbhkdhj
-        return res.json({file: `${process.env.APP_BASE_URL}files/${response.uuid}`});
+        return res.json({file: `${process.env.APP_BASE_URL}/files/${response.uuid}`});
     });
 });
 
@@ -57,7 +57,7 @@ router.post('/send', async (req, res) => {
     try {
         const file = await File.findOne({ uuid: uuid });
         if(file.sender) {
-        return res.status(422).send({ error: 'Email already sent once.'});
+            return res.status(422).send({ error: 'Email already sent once.'});
         }
         file.sender = emailFrom;
         file.receiver = emailTo;
@@ -65,21 +65,21 @@ router.post('/send', async (req, res) => {
         // send mail
         const sendMail = require('../services/mailService');
         sendMail({
-        from: emailFrom,
-        to: emailTo,
-        subject: 'ShareME file sharing',
-        text: `${emailFrom} shared a file with you.`,
-        html: require('../services/emailTemplate')({
+            from: emailFrom,
+            to: emailTo,
+            subject: 'ShareME file sharing',
+            text: `${emailFrom} shared a file with you.`,
+            html: require('../services/emailTemplate')({
                     emailFrom, 
                     downloadLink: `${process.env.APP_BASE_URL}files/${file.uuid}?source=email` ,
                     size: parseInt(file.size/1024) + ' KB',
                     expires: '24 hours'
                 })
-    }).then(() => {
-        return res.json({success: true});
-    }).catch(err => {
-        return res.status(500).json({error: 'Error in sending email.', details: err.message});
-    });
+        }).then(() => {
+            return res.json({success: true});
+        }).catch(err => {
+            return res.status(500).json({error: 'Error in sending email.', details: err.message});
+        });
     } catch(err) {
         return res.status(500).send({ error: 'Something went wrong.', details: err.message });
     }
